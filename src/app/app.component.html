@@ -1,23 +1,51 @@
 <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
-    
-        <a class="navbar-brand" href="#/">PizzaFuti3000</a>
-    
-        <button aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" type="button" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="navbar-collapse collapse show" id="navbarContent" [ngbCollapse]="isCollapsed">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#/getting-started">Getting Started</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/components">Components</a>
-            </li>
-            <li class="nav-item d-lg-none">
-              <a class="nav-link" href="#/components/accordion">Accordion</a>
-            </li> 
-          </ul>
+
+  <a class="navbar-brand" href="#/">PizzaFuti3000</a>
+
+  <button aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"
+    type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse show" id="navbarContent" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#/getting-started">Getting Started</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#/components">Components</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav float-right">
+      <li class="nav-item">
+        <div>
+          <a class="nav-link" href="#/">Sign In</a>
         </div>
-      </header>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div>
+  <input type="text" [(ngModel)]="title" name="title" placeholder="Title...">
+  <input type="text" [(ngModel)]="content" name="content" placeholder="Content...">
+  <input type="submit" value="Add a Post" (click)="addPost()">
+</div>
+
+<ul *ngFor="let post of posts | async">
+  <li (click)="getPost(post.id)">
+    <strong>{{ post.data.title}}</strong>
+    <br>
+    <p>
+      {{post.data.content}}
+    </p>
+    <button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button>
+  </li>
+</ul>
+
+
+<h1>A specific post:</h1>
+
+<h3>{{ (post | async)?.title }}</h3>
+<p>{{ (post | async)?.content }}</p>
