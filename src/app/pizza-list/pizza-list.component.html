@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div *ngFor="let pizza of pizzaService.pizzas | async">
+    <div>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" [src]="pizza.image" alt="Pizza Image">
+        <div class="card-block">
+          <h4 class="card-title">{{ pizza.title}}</h4>
+          <p class="card-text">{{pizza.description}}</p>
+          <p appDiscountToolTip>Price: {{pizza.price | discount | currency:'USD':'symbol' }}</p>
+          <button class="btn btn-danger" disabled>Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
