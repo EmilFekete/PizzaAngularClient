@@ -1,8 +1,8 @@
 import { PizzaService, Pizza } from '../core/pizza.service';
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { DiscountPipe } from '../discount.pipe'
 @Component({
   selector: 'app-pizza-list',
   templateUrl: './pizza-list.component.html',

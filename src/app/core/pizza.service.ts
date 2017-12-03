@@ -13,13 +13,14 @@ export interface Pizza {
 
 @Injectable()
 export class PizzaService {
-
+  priceDiscount: number;
   pizzasCol: AngularFirestoreCollection<Pizza>;
   pizzas: Observable<Pizza[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.pizzasCol = this.firestore.collection('pizzas');
     this.pizzas = this.pizzasCol.valueChanges();
+    this.priceDiscount = 0.2;
   }
 
 

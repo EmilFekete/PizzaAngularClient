@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { DiscountPipe } from './discount.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     AboutComponent,
     HomeComponent,
     RegisterComponent,
+    DiscountPipe,
   ],
   imports: [
     FormsModule,
