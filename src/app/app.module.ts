@@ -10,12 +10,17 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PizzaListComponent } from './pizza-list/pizza-list.component';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
     UserProfileComponent,
     NavigationComponent,
     LoginComponent,
+    DashboardComponent,
+    PizzaListComponent,
   ],
   imports: [
     FormsModule,
@@ -23,7 +28,8 @@ import { environment } from '../environments/environment';
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.auth),
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    AppRoutingModule
 
   ],
   providers: [],
