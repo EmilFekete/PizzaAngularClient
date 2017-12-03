@@ -1,4 +1,4 @@
-import { PizzaService } from '../core/pizza.service';
+import { PizzaService, Pizza } from '../core/pizza.service';
 import { AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
@@ -12,9 +12,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pizza-list.component.css']
 })
 export class PizzaListComponent implements OnInit {
+  pizzas: Observable<Pizza>
 
   constructor(private pizzaService: PizzaService) {
-
+    this.pizzas = pizzaService.pizzas;
   }
 
   public ngOnInit(): void {

@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { HomeComponent } from './home/home.component';
     ContactComponent,
     AboutComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     FormsModule,

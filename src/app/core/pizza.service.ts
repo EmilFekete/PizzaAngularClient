@@ -3,13 +3,12 @@ import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore 
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-interface Post {
+export interface Pizza {
   title: string;
-  content: string;
-}
-
-interface PostId extends Post {
+  description: string;
   id: string;
+  price: number;
+  image: string;
 }
 
 @Injectable()
@@ -18,61 +17,30 @@ export class PizzaService {
   items: AngularFirestoreCollection<any[]>;
   msgVal: string = '';
 
-  userEmail: string;
-
-  postsCol: AngularFirestoreCollection<Post>;
-  posts: any;
-  title: string;
-  content: string;
-  postDoc: AngularFirestoreDocument<Post>;
-  post: Observable<Post>;
+  pizzasCol: AngularFirestoreCollection<Pizza>;
+  pizzas: any;
+  pizzaDoc: AngularFirestoreDocument<Pizza>;
+  pizza: Observable<Pizza>;
   constructor(
     private firestore: AngularFirestore,
     public afAuth: AngularFireAuth) {
   }
 
   public ngOnInit(): void {
-    this.postsCol = this.firestore.collection('posts');
-    this.posts = this.postsCol.snapshotChanges()
+    this.pizzasCol = this.firestore.collection('pizzas');
+    this.pizzas = this.pizzasCol.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
-          const data = a.payload.doc.data() as Post;
+          const data = a.payload.doc.data() as Pizza;
           const id = a.payload.doc.id;
           return { id, data };
         });
       });
   }
 
-  addPost() {
-    this.firestore.collection('posts').add({ 'title': this.title, 'content': this.content });
-  }
-
-  getPost(postId) {
-    this.postDoc = this.firestore.doc('posts/' + postId);
-    this.post = this.postDoc.valueChanges();
-  }
-
-  deletePost(postId) {
-    this.firestore.doc('posts/' + postId).delete();
-  }
-
-
-  login() {
-
-  }
-
-  onLogOut() {
-    this.afAuth.auth.signOut().then(
-      (success) => {
-        console.log("succes! ");
-        console.log(success);
-      }
-    ).catch(
-      (err) => {
-        console.log("Error! ");
-        console.log(err);
-      }
-      );
+  getPizza(pizzaId) {
+    this.pizzaDoc = this.firestore.doc('pizzas/' + pizzaId);
+    this.pizza = this.pizzaDoc.valueChanges();
   }
 
   Send(desc: string) {

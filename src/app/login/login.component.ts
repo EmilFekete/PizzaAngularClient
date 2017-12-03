@@ -10,28 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   user: Observable<User>;
-
-
   userEmail: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private auth: AuthService) {
   }
 
   public ngOnInit(): void {
 
   }
 
-
-  onLogOut() {
-    this.authService.signOut();
-  }
-
-
-
   onRegister(formData) {
     if (formData.valid) {
       console.log(formData.value);
-      this.authService.register(formData.value.email, formData.value.password);
+      this.auth.register(formData.value.email, formData.value.password);
     }
   }
 
@@ -39,7 +30,7 @@ export class LoginComponent implements OnInit {
   onLogin(formData) {
     if (formData.valid) {
       console.log(formData.value);
-      this.authService.login(formData.value.email, formData.value.password);
+      this.auth.login(formData.value.email, formData.value.password);
     }
   }
 

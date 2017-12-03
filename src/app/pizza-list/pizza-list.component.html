@@ -1,22 +1,12 @@
-<div>
-  <input type="text" [(ngModel)]="title" name="title" placeholder="Title...">
-  <input type="text" [(ngModel)]="content" name="content" placeholder="Content...">
-  <input type="submit" value="Add a Post" (click)="addPost()">
-</div>
-
-<ul *ngFor="let post of posts | async">
-  <li (click)="getPost(post.id)">
-    <strong>{{ post.data.title}}</strong>
+<ul *ngFor="let pizza of pizzas | async">
+  <li>
+    <strong>{{ pizza.data.title}}</strong>
     <br>
     <p>
-      {{post.data.content}}
+      {{pizza.data.description}}
     </p>
-    <button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button>
+    <button class="btn btn-danger" (click)="cart.addToCart(pizza.id)">Add to Cart</button>
   </li>
 </ul>
 
-
-<h1>A specific post:</h1>
-
-<h3>{{ (post | async)?.title }}</h3>
-<p>{{ (post | async)?.content }}</p>
+<p>Pizza list</p>

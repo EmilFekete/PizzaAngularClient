@@ -1,12 +1,13 @@
 <div>
   <br>
-  <h2>Login</h2>
-  <form #formData='ngForm' (ngSubmit)="onLogin(formData)">
+  <h1>Register</h1>
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
     <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
     <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+
     <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
   </form>
+
 </div>
-<button (click)="auth.googleLogin()">
-  <i class="fa fa-google"></i> Connect Google
-</button>
