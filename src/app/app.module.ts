@@ -13,6 +13,9 @@ import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     DashboardComponent,
     PizzaListComponent,
+    ContactComponent,
+    AboutComponent,
+    HomeComponent,
   ],
   imports: [
     FormsModule,
