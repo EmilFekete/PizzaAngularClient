@@ -10,7 +10,7 @@ export interface Pizza {
   price: number;
   image: string;
 }
-
+//Pizza handling service, for listing pizzas from database
 @Injectable()
 export class PizzaService {
   priceDiscount: number;

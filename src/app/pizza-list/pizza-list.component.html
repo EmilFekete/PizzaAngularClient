@@ -7,7 +7,7 @@
           <h4 class="card-title">{{ pizza.title}}</h4>
           <p class="card-text">{{pizza.description}}</p>
           <p appDiscountToolTip>Price: {{pizza.price | discount | currency:'USD':'symbol' }}</p>
-          <button class="btn btn-danger" (click)="cart.addToCart(pizza.id)">Add to Cart</button>
+          <button class="btn btn-danger" disabled>Add to Cart</button>
         </div>
       </div>
     </div>

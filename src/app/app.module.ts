@@ -32,7 +32,7 @@ import { DiscountToolTipDirective } from './discount-tool-tip.directive';
     HomeComponent,
     RegisterComponent,
     DiscountPipe,
-    DiscountToolTipDirective,
+    DiscountToolTipDirective
   ],
   imports: [
     FormsModule,

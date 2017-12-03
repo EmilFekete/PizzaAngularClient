@@ -19,14 +19,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onRegister(formData) {
-    if (formData.valid) {
-      console.log(formData.value);
-      this.auth.register(formData.value.email, formData.value.password);
-    }
-  }
-
-
   onLogin(formData) {
     if (formData.valid) {
       console.log(formData.value);

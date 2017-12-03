@@ -7,12 +7,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 export interface User {
-  uid: string;
+  uid?: string;
   email: string;
   photoURL?: string;
   displayName?: string;
-  favoriteColor?: string;
 }
+
+//Authenticator service, for sign in/up
 @Injectable()
 export class AuthService {
 
@@ -47,6 +48,7 @@ export class AuthService {
         this.router.navigate(['']);
       });
   }
+
   private updateUserData(user) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -61,7 +63,6 @@ export class AuthService {
   signOut() {
     this.afAuth.auth.signOut();
   }
-
 
   register(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
@@ -81,13 +82,7 @@ export class AuthService {
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
       (success) => {
-        console.log("succes! ");
-        console.log(success);
-      }
-    ).catch(
-      (err) => {
-        console.log("Error! ");
-        console.log(err);
+        this.router.navigate(['']);
       });
   }
 }

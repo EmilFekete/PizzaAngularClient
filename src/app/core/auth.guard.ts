@@ -5,9 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+
+
+//Auth guard for admin pages
 @Injectable()
 export class AuthGuard implements CanActivate {
+
   constructor(private auth: AuthService, private router: Router) { }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
