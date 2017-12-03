@@ -1,10 +1,11 @@
-<ul *ngFor="let pizza of pizzas | async">
+<ul *ngFor="let pizza of pizzaService.pizzas | async">
   <li>
-    <strong>{{ pizza.data.title}}</strong>
+    <strong>{{ pizza.title}}</strong>
     <br>
     <p>
-      {{pizza.data.description}}
+      {{pizza.description}}
     </p>
+    <img [src]="pizza.image" alt="Pizza Image">
     <button class="btn btn-danger" (click)="cart.addToCart(pizza.id)">Add to Cart</button>
   </li>
 </ul>

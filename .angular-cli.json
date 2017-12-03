@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "assets/images"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -22,8 +23,7 @@
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

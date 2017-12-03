@@ -26,7 +26,7 @@ export class AuthService {
         } else {
           return Observable.of(null)
         }
-      })
+      });
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
