@@ -13,4 +13,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(formData) {
+    if (formData.valid) {
+      this.auth.register(formData.value.email, formData.value.password);
+    }
+  }
+
 }

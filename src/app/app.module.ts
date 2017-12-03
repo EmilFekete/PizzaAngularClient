@@ -18,6 +18,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DiscountPipe } from './discount.pipe';
+import { DiscountToolTipDirective } from './discount-tool-tip.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { DiscountPipe } from './discount.pipe';
     HomeComponent,
     RegisterComponent,
     DiscountPipe,
+    DiscountToolTipDirective,
   ],
   imports: [
     FormsModule,

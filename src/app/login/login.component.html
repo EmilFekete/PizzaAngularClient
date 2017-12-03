@@ -1,12 +1,11 @@
-<div>
+<div class="container-fluid">
   <br>
   <h2>Login</h2>
   <form #formData='ngForm' (ngSubmit)="onLogin(formData)">
     <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
     <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
-    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Login</button>
   </form>
+  <button class="btn btn-success" (click)="auth.googleLogin()">Sing In With Google</button>
+  <button class="btn btn-primary" routerLink="/register">Register</button>
 </div>
-<button (click)="auth.googleLogin()">
-  <i class="fa fa-google"></i> Connect Google
-</button>

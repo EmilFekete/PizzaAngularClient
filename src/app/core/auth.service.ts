@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth, AUTH_PROVIDERS } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/switchMap';
+
 export interface User {
   uid: string;
   email: string;
@@ -14,7 +15,10 @@ export interface User {
 }
 @Injectable()
 export class AuthService {
+
   user: Observable<User>;
+  error: any;
+
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router) {
@@ -28,15 +32,20 @@ export class AuthService {
         }
       });
   }
+
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user)
-      })
+      }).then(
+      (success) => {
+        this.router.navigate(['']);
+      });
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
@@ -50,9 +59,7 @@ export class AuthService {
     return userRef.set(data)
   }
   signOut() {
-    this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/']);
-    });
+    this.afAuth.auth.signOut();
   }
 
 
@@ -61,6 +68,8 @@ export class AuthService {
       (success) => {
         console.log("succes! ");
         console.log(success);
+        this.router.navigate(['']);
+        this.login(email, password)
       }
     ).catch(
       (err) => {
