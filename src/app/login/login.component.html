@@ -1,0 +1,38 @@
+<p>
+  login works!
+</p>
+<div>
+  <br>
+  <h1>Register</h1>
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+  </form>
+
+</div>
+
+<div>
+  <br>
+  <h2>Login</h2>
+  <form #formData='ngForm' (ngSubmit)="onLogin(formData)">
+
+    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+  </form>
+
+</div>
+
+<div>
+  <button type="submit" class="basic-btn" (click)="onLogOut()">Log Out</button>
+</div>
+
+<div *ngIf="userEmail">
+  <h1>WELCOME {{userEmail}}</h1>
+</div>

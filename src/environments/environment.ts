@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth: {
+    apiKey: "AIzaSyCcUPLOgDMG20ng1dMBFmZPruLn5YVEBzQ",
+    authDomain: "pizzawebapp3000.firebaseapp.com",
+    databaseURL: "https://pizzawebapp3000.firebaseio.com",
+    projectId: "pizzawebapp3000",
+    storageBucket: "pizzawebapp3000.appspot.com",
+    messagingSenderId: "221845672726"
+  }
 };
